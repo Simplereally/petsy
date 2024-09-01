@@ -1,28 +1,9 @@
 "use client";
-
 import { useGetUser } from "@/hooks/useGetUser";
-import { getUser, logoutAccount } from "@/lib/actions/user.actions"; // Import logoutAccount action
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-
-interface FooterProps {
-  type?: "desktop" | "mobile";
-}
+import LogoutButton from "../LogoutButton";
 
 const Footer = ({ type = "desktop" }: FooterProps) => {
-  const router = useRouter();
-  const {user} = useGetUser();
-
-  const handleLogout = async () => {
-    try {
-      await logoutAccount();
-      router.push("/"); // Redirect to the homepage (or you can change this to another route)
-    } catch (error) {
-      console.error("Failed to log out:", error);
-      // Optionally, redirect to an error page or display an error message
-    }
-  };
+  const user = useGetUser();
 
   return (
     <footer className={"footer border-t px-2"}>
@@ -33,18 +14,7 @@ const Footer = ({ type = "desktop" }: FooterProps) => {
         <h1 className="text-14 truncate font-normal font-semibold">{user?.firstName} {user?.lastName}</h1>
         <p className="text-14 truncate font-normal">{user?.email}</p>
       </div>
-      <button
-        className={type === "mobile" ? "footer_image-mobile" : "footer_image"}
-        onClick={handleLogout} // Use handleLogout on button click
-        onKeyDown={async (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            await handleLogout(); // Handle keyboard click for accessibility
-          }
-        }}
-        tabIndex={0}
-      >
-        <Image src="icons/logout.svg" className="footer-logout" fill alt="logout" />
-      </button>
+      <LogoutButton type={type}/>
     </footer>
   );
 };

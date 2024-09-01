@@ -191,12 +191,12 @@
 
   /* Footer */
   .footer {
-    @apply flex cursor-pointer items-center justify-between gap-2 py-6;
+    @apply flex items-center justify-between gap-2 py-6;
   }
 
   /* make the svg white on hover */
   .footer-logout {
-    @apply fill-white;
+    @apply absolute;
   }
 
   .footer_name {

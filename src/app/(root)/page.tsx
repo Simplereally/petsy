@@ -9,8 +9,6 @@ const Home = () => {
           <HeaderBox
             type="greeting"
             title="Welcome"
-            user="Guest"
-            subtext="Access and manage your account and transactions efficiently."
           />
           <Button>This is my button</Button>
           <Button>This is my button</Button>

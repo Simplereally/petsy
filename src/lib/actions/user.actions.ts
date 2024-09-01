@@ -68,7 +68,8 @@ export const getUser = async (): Promise<UserSession | null> => {
   const supabase = createClient();
 
   const user = await supabase.auth.getUser();
-  console.log(user);
+
+  console.log("@@@@", user);
   
   if (!user.data.user?.email || !user?.data?.user?.user_metadata?.firstName || !user?.data?.user?.user_metadata?.lastName) return null;
 
@@ -77,7 +78,7 @@ export const getUser = async (): Promise<UserSession | null> => {
     firstName: user.data.user?.user_metadata.firstName as string,
     lastName: user.data.user?.user_metadata.lastName as string,
   };
-  
+
   return userSession;
 }
 

@@ -5,8 +5,7 @@ declare interface FooterProps {
 declare interface HeaderBoxProps {
   type?: "title" | "greeting";
   title: string;
-  subtext: string;
-  user?: string;
+  subtext?: string;
 }
 
 declare interface MobileNavProps {

@@ -12,5 +12,5 @@ export const useGetUser = () => {
     void fetchUser();
   }, []);
 
-  return { user};
+  return user;
 };
