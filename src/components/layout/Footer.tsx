@@ -1,6 +1,10 @@
-import { logoutAccount } from "@/lib/actions/user.actions"; // Import logoutAccount action
+"use client";
+
+import { useGetUser } from "@/hooks/useGetUser";
+import { getUser, logoutAccount } from "@/lib/actions/user.actions"; // Import logoutAccount action
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface FooterProps {
   type?: "desktop" | "mobile";
@@ -8,6 +12,7 @@ interface FooterProps {
 
 const Footer = ({ type = "desktop" }: FooterProps) => {
   const router = useRouter();
+  const {user} = useGetUser();
 
   const handleLogout = async () => {
     try {
@@ -25,8 +30,8 @@ const Footer = ({ type = "desktop" }: FooterProps) => {
         <p className="text-xl font-bold">?</p>
       </div>
       <div className={type === "mobile" ? "footer_email-mobile" : "footer_email"}>
-        <h1 className="text-14 truncate font-normal font-semibold">name</h1>
-        <p className="text-14 truncate font-normal">email</p>
+        <h1 className="text-14 truncate font-normal font-semibold">{user?.firstName} {user?.lastName}</h1>
+        <p className="text-14 truncate font-normal">{user?.email}</p>
       </div>
       <button
         className={type === "mobile" ? "footer_image-mobile" : "footer_image"}

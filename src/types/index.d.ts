@@ -26,6 +26,12 @@ declare type LoginUser = {
   password: string;
 };
 
+interface UserSession {
+  email: string;
+  firstName: string;
+  lastName: string;
+}
+
 declare type User = {
   id: string;
   userId: string;
@@ -41,6 +47,12 @@ declare type User = {
   createdAt: Date;
   updatedAt: Date | null;
 };
+
+declare type UserSession = {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
 
 declare type NewUserParams = {
   userId: string;

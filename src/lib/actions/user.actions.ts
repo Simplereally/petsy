@@ -1,6 +1,8 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
+import { UserResponse } from "@supabase/supabase-js";
+import { User } from "lucide-react";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 const SESSION_EXPIRY_HOURS = 12;
@@ -12,6 +14,7 @@ export const signIn = async ({ email, password }: SignInProps): Promise<SignInRe
     const { error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (error) {
+      console.log(error);
       let errorMessage = "Something went wrong. Please try again.";
 
       if (error.status === 400) errorMessage = "Invalid email or password.";
@@ -60,6 +63,23 @@ export const signUp = async ({ ...userData }: SignUpParams) => {
 
   return { success: true };
 };
+
+export const getUser = async (): Promise<UserSession | null> => {
+  const supabase = createClient();
+
+  const user = await supabase.auth.getUser();
+  console.log(user);
+  
+  if (!user.data.user?.email || !user?.data?.user?.user_metadata?.firstName || !user?.data?.user?.user_metadata?.lastName) return null;
+
+  const userSession: UserSession = {
+    email: user.data.user?.email,
+    firstName: user.data.user?.user_metadata.firstName as string,
+    lastName: user.data.user?.user_metadata.lastName as string,
+  };
+  
+  return userSession;
+}
 
 export const logoutAccount = async (): Promise<void> => {
   const supabase = createClient();

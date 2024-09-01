@@ -9,6 +9,7 @@ import Footer from "./Footer";
 
 const Sidebar = ({ type = "desktop" }: SidebarProps) => {
   const pathname = usePathname();
+
   return (
     <section className={cn("sidebar", type === "mobile" && "!flex !w-auto max-sm:block")}>
       <div className="flex flex-col">
