@@ -1,9 +1,6 @@
 "use server";
 
 import { createClient } from "@/utils/supabase/server";
-import { UserResponse } from "@supabase/supabase-js";
-import { User } from "lucide-react";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 const SESSION_EXPIRY_HOURS = 12;
 
@@ -70,7 +67,7 @@ export const getUser = async (): Promise<UserSession | null> => {
   const user = await supabase.auth.getUser();
 
   console.log("@@@@", user);
-  
+
   if (!user.data.user?.email || !user?.data?.user?.user_metadata?.firstName || !user?.data?.user?.user_metadata?.lastName) return null;
 
   const userSession: UserSession = {
@@ -80,7 +77,7 @@ export const getUser = async (): Promise<UserSession | null> => {
   };
 
   return userSession;
-}
+};
 
 export const logoutAccount = async (): Promise<void> => {
   const supabase = createClient();
@@ -88,7 +85,5 @@ export const logoutAccount = async (): Promise<void> => {
   const { error } = await supabase.auth.signOut();
 
   if (error) redirect("/error");
-
-  revalidatePath("/", "layout");
   redirect("/");
 };

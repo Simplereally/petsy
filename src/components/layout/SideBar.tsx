@@ -1,15 +1,13 @@
-"use client";
-
+import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
 import { sidebarLinks } from "../../constants/index";
 import { cn } from "../../lib/utils";
 import Footer from "./Footer";
 
 const Sidebar = ({ type = "desktop" }: SidebarProps) => {
-  const pathname = usePathname();
-  const router = useRouter();
+  const headerList = headers();
+  const pathname = headerList.get("x-current-path");
 
   return (
     <section className={cn("sidebar", type === "mobile" && "!flex !w-auto max-sm:block")}>
@@ -19,15 +17,10 @@ const Sidebar = ({ type = "desktop" }: SidebarProps) => {
             <h1 className={cn("sidebar-logo", type === "mobile" && "!block pl-4")}>Petsy</h1>
           </Link>
           {sidebarLinks.map((item) => {
-            const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`);
+            const isActive = pathname === item.route || pathname?.startsWith(`${item.route}/`);
+
             return (
               <Link
-                onKeyDown={(e) => {
-                  if (e.key === " " || e.key === "Enter") {
-                    e.preventDefault();
-                    router.push(item.route);
-                  }
-                }}
                 href={item.route}
                 key={item.label}
                 className={cn(`${isActive ? "sidebar-link-active" : "sidebar-link-inactive"}`, type === "mobile" && "!justify-start")}

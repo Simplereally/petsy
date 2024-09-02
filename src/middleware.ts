@@ -13,7 +13,14 @@ It's safe to trust getUser() because it sends a request to the Supabase Auth ser
 */
 
 export async function middleware(request: NextRequest) {
-  return await updateSession(request);
+  // Step 1: Update the session and get the initial response
+  const response = await updateSession(request);
+
+  // Step 2: Create or modify headers and set "x-current-path"
+  response.headers.set("x-current-path", request.nextUrl.pathname);
+
+  // Step 3: Return the modified supabaseResponse
+  return response;
 }
 
 export const config = {
