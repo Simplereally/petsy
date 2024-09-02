@@ -1,5 +1,5 @@
 import { getUser } from "@/lib/actions/user.actions";
-import LogoutButton from "../LogoutButton";
+import LogoutDialog from "../LogoutDialog";
 
 const Footer = async ({ type = "desktop" }: FooterProps) => {
   const user = await getUser();
@@ -15,7 +15,7 @@ const Footer = async ({ type = "desktop" }: FooterProps) => {
         </h1>
         <p className="text-14 truncate font-normal">{user?.email}</p>
       </div>
-      <LogoutButton type={type} />
+      <LogoutDialog type={type} />
     </footer>
   );
 };
