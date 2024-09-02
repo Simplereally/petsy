@@ -2,7 +2,6 @@
 
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
-const SESSION_EXPIRY_HOURS = 12;
 
 export const signIn = async ({ email, password }: SignInProps): Promise<SignInResponse> => {
   try {
