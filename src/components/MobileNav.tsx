@@ -1,11 +1,9 @@
 "use client";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import SideBar from "./layout/SideBar";
 
-const MobileNav = ({ user }: MobileNavProps) => {
-  const pathname = usePathname();
+const MobileNav = () => {
   return (
     <section className="flex w-full gap-2">
       <Sheet>

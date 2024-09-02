@@ -17,7 +17,6 @@ import { type z } from "zod";
 const SignUpForm = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const [user, setUser] = useState(null);
 
   const formSchema = signUpFormSchema;
   const form = useForm<z.infer<typeof formSchema>>({
@@ -25,6 +24,7 @@ const SignUpForm = () => {
     defaultValues: {
       email: "",
       password: "",
+      confirmPassword: "",
       firstName: "",
       lastName: "",
       address1: "",
@@ -33,6 +33,7 @@ const SignUpForm = () => {
       postalCode: "",
       dateOfBirth: "",
     },
+    mode: "onTouched",
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
@@ -49,7 +50,6 @@ const SignUpForm = () => {
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
-    console.log("handle submit called");
     e.preventDefault();
     void form.handleSubmit(onSubmit)(e);
   };
@@ -65,19 +65,19 @@ const SignUpForm = () => {
       <Form {...form}>
         <form onSubmit={handleFormSubmit} className="space-y-8">
           <div className="flex gap-4">
-            <CustomInput control={form.control} name="firstName" label="First Name" placeholder="Enter your first name" />
-            <CustomInput control={form.control} name="lastName" label="Last Name" placeholder="Enter your last name" />
+            <CustomInput id="firstName" control={form.control} name="firstName" label="First Name" />
+            <CustomInput id="lastName" control={form.control} name="lastName" label="Last Name" />
           </div>
-          <CustomInput control={form.control} name="address1" label="Address" placeholder="Enter your address" />
-          <CustomInput control={form.control} name="city" label="City" placeholder="Enter your city" />
+          <CustomInput id="address1" control={form.control} name="address1" label="Address" />
+          <CustomInput id="city" control={form.control} name="city" label="City" />
           <div className="flex gap-4">
-            <CustomInput control={form.control} name="state" label="State" placeholder="Enter your state" />
-            <CustomInput control={form.control} name="postalCode" label="Postal Code" placeholder="Enter your postal code" />
+            <CustomInput id="state" control={form.control} name="state" label="State" />
+            <CustomInput id="postalCode" control={form.control} name="postalCode" label="Postal Code" />
           </div>
-          <CustomInput control={form.control} name="dateOfBirth" label="Date of Birth" placeholder="Enter your date of birth" />
-          <CustomInput control={form.control} name="email" label="Email" placeholder="Enter your email" />
-          <CustomInput control={form.control} name="password" label="Password" placeholder="Enter your password" />
-          <CustomInput control={form.control} name="confirmPassword" label="Confirm Password" placeholder="Enter your password again" />
+          <CustomInput id="dateOfBirth" control={form.control} name="dateOfBirth" label="Date of Birth" />
+          <CustomInput id="email" control={form.control} name="email" label="Email" />
+          <CustomInput id="password" control={form.control} name="password" label="Password" />
+          <CustomInput id="confirmPassword" control={form.control} name="confirmPassword" label="Confirm Password" />
           <Button type="submit" disabled={isLoading}>
             {isLoading ? (
               <>

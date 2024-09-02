@@ -90,7 +90,7 @@
 
 @layer utilities {
   .input-class {
-    @apply text-16 placeholder:text-16 rounded-lg border border-gray-300;
+    @apply font-medium rounded-lg border border-gray-300;
   }
 
   .sheet-content button {

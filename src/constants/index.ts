@@ -5,27 +5,27 @@ export const sidebarLinks = [
     label: "Home",
   },
   {
-    imgURL: "/icons/dollar-circle.svg",
+    imgURL: "/icons/dashboard.svg",
     route: "/dashboard",
     label: "Dashboard",
   },
   {
-    imgURL: "/icons/transaction.svg",
+    imgURL: "/icons/customers.svg",
     route: "/customers",
     label: "Customers",
   },
   {
-    imgURL: "/icons/transaction.svg",
+    imgURL: "/icons/pets.svg",
     route: "/pets",
     label: "Pets",
   },
   {
-    imgURL: "/icons/transaction.svg",
+    imgURL: "/icons/appointments.svg",
     route: "/appointments",
     label: "Appointments",
   },
   {
-    imgURL: "/icons/money-send.svg",
+    imgURL: "/icons/settings.svg",
     route: "/settings",
     label: "Settings",
   },

@@ -27,6 +27,7 @@ const LoginForm = () => {
       email: "",
       password: "",
     },
+    mode: "onTouched",
   });
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
@@ -57,8 +58,8 @@ const LoginForm = () => {
       </header>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <CustomInput control={form.control} name="email" label="Email" placeholder="Enter your email" />
-          <CustomInput control={form.control} name="password" label="Password" placeholder="Enter your password" />
+          <CustomInput id="email" control={form.control} name="email" label="Email" inputMode="email" />
+          <CustomInput id="password" control={form.control} name="password" label="Password" />
           <Button type="submit" disabled={isLoading}>
             {isLoading ? <Loader2 size={20} className="animate-spin" /> : "Login"}
           </Button>
