@@ -18,7 +18,7 @@ const LogoutButton = ({ type }: LogoutButtonProps) => {
   };
 
   return (
-    <Button type="submit" onClick={handleLogout} className={type === "mobile" ? "footer_image-mobile" : "footer_image"}>
+    <Button type="submit" onClick={handleLogout}>
       {isLoading ? (
         <>
           <Loader2 size={20} className="animate-spin" /> &nbsp; Logging out...

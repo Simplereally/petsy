@@ -20,7 +20,7 @@ const LogoutDialog = ({ type }: FooterProps) => {
           <DialogTitle>Logout</DialogTitle>
           <DialogDescription>Are you sure you want to logout?</DialogDescription>
         </DialogHeader>
-        <DialogFooter className="sm:justify-start">
+        <DialogFooter className="justify-start">
           <LogoutButton type={type} />
           <DialogClose asChild>
             <Button type="button" variant="secondary">

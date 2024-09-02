@@ -65,8 +65,6 @@ export const getUser = async (): Promise<UserSession | null> => {
 
   const user = await supabase.auth.getUser();
 
-  console.log("@@@@", user);
-
   if (!user.data.user?.email || !user?.data?.user?.user_metadata?.firstName || !user?.data?.user?.user_metadata?.lastName) return null;
 
   const userSession: UserSession = {
