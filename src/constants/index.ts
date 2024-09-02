@@ -16,8 +16,8 @@ export const sidebarLinks = [
   },
   {
     imgURL: "/icons/pets.svg",
-    route: "/pets",
-    label: "Pets",
+    route: "/patients",
+    label: "Patients",
   },
   {
     imgURL: "/icons/appointments.svg",

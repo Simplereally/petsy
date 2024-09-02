@@ -63,8 +63,8 @@ export function formUrlQuery({ params, key, value }: UrlQueryParams) {
 
 // Login form schema: only requires email and password
 export const loginFormSchema = z.object({
-  email: z.string().min(1, "Please enter your email."),
-  password: z.string().min(1).max(50),
+  email: z.string().min(1, "Please enter your email"),
+  password: z.string().min(1, "Please enter your password").max(50),
 });
 
 // Sign-up form schema: includes all fields

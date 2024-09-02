@@ -1,3 +1,4 @@
+"use client";
 import { type Control, type FieldPath, type FieldValues } from "react-hook-form";
 import { FloatingLabelInput } from "./ui/floating-input";
 import { FormControl, FormField, FormMessage } from "./ui/form";

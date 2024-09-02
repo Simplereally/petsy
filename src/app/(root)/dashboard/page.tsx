@@ -63,7 +63,7 @@ export default function DashboardPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    className="h-4 w-4 text-muted-foreground"
+                    className="h-6 w-6 text-muted-foreground"
                   >
                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                     <circle cx="9" cy="7" r="4" />
@@ -88,7 +88,20 @@ export default function DashboardPage() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">Furry friends tended to</CardTitle>
-                  <img src="/icons/pets.svg" alt="Pet Icon" className="h-4 w-4 text-muted-foreground" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="h-6 w-6 text-muted-foreground"
+                  >
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">
@@ -102,8 +115,23 @@ export default function DashboardPage() {
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">No-shows</CardTitle>
-                  <span className="inline-block items-center">
-                    <img src="/icons/noshow.svg" alt="No show Icon" className="h-12 w-12 text-muted-foreground" />
+                  <span className="inline-flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    className="h-6 w-6 text-muted-foreground"
+                  >
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    
+                    <line x1="16" y1="23" x2="23" y2="15" stroke="#e70505"/>
+                    <line x1="16" y1="15" x2="23" y2="23" stroke="#e70505" />
+                  </svg>
                   </span>
                 </CardHeader>
                 <CardContent>
@@ -126,13 +154,17 @@ export default function DashboardPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    className="h-4 w-4 text-muted-foreground"
+                    className="h-6 w-6 text-muted-foreground"
                   >
                     <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">+23</div>
+                <div className="text-2xl font-bold">
+                  <span className="inline-flex items-center">
+                    +<AnimatedCounter amount={23} />
+                  </span>
+                  </div>
                   <p className="text-xs text-muted-foreground">+2 in last hour</p>
                 </CardContent>
               </Card>
@@ -148,8 +180,8 @@ export default function DashboardPage() {
               </Card>
               <Card className="col-span-3">
                 <CardHeader>
-                  <CardTitle>Recent Sales</CardTitle>
-                  <CardDescription>You made 265 sales this month.</CardDescription>
+                  <CardTitle>Recent Appointments</CardTitle>
+                  <CardDescription>You had 78 appointments this month.</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <RecentSales />

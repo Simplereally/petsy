@@ -58,7 +58,7 @@ const LoginForm = () => {
       </header>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-          <CustomInput id="email" control={form.control} name="email" label="Email" inputMode="email" />
+          <CustomInput id="email" control={form.control} name="email" label="Email" inputMode="email"/>
           <CustomInput id="password" control={form.control} name="password" label="Password" />
           <Button type="submit" disabled={isLoading}>
             {isLoading ? <Loader2 size={20} className="animate-spin" /> : "Login"}
