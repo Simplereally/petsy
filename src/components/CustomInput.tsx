@@ -7,11 +7,12 @@ interface CustomInputProps<T extends FieldValues> {
   id: string;
   control: Control<T>;
   name: FieldPath<T>;
+  type?: string;
   label: string;
   inputMode?: React.InputHTMLAttributes<HTMLInputElement>["inputMode"];
 }
 
-const CustomInput = <T extends FieldValues>({ id, control, name, label, inputMode }: CustomInputProps<T>) => {
+const CustomInput = <T extends FieldValues>({ id, control, name, type, label, inputMode }: CustomInputProps<T>) => {
   return (
     <FormField
       control={control}
@@ -23,7 +24,7 @@ const CustomInput = <T extends FieldValues>({ id, control, name, label, inputMod
               <FloatingLabelInput
                 id={id}
                 className="input-class"
-                type={name === "password" ? "password" : "text"}
+                type={type === "password" ? "password" : "text"}
                 label={label}
                 inputMode={inputMode}
                 {...field}

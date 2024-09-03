@@ -76,8 +76,8 @@ const SignUpForm = () => {
           </div>
           <CustomInput id="dateOfBirth" control={form.control} name="dateOfBirth" label="Date of Birth" />
           <CustomInput id="email" control={form.control} name="email" label="Email" />
-          <CustomInput id="password" control={form.control} name="password" label="Password" />
-          <CustomInput id="confirmPassword" control={form.control} name="confirmPassword" label="Confirm Password" />
+          <CustomInput id="password" control={form.control} name="password" label="Password" type="password"/>
+          <CustomInput id="confirmPassword" control={form.control} name="confirmPassword" label="Confirm Password" type="password"/>
           <Button type="submit" disabled={isLoading}>
             {isLoading ? (
               <>
